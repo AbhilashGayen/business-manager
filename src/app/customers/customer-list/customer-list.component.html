@@ -1,0 +1,84 @@
+<div class="uk-container uk-margin-medium-top">
+    <div uk-margin>
+        <div routerLink="/create" class="uk-inline">
+            <a class="uk-form-icon" style="color: white " uk-icon="icon: plus-circle"></a>
+            <button class="uk-button uk-button-primary uk-button-medium">&nbsp;&nbsp;ADD NEW CUSTOMER</button>
+        </div>
+    </div>
+    <ul uk-tab="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium" style="background-color: transparent;">
+        <li>
+            <a href="#">
+                <span uk-icon="icon: list"></span> LIST
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span uk-icon="icon: grid"></span> GRID
+            </a>
+        </li>
+    </ul>
+    <ul class="uk-switcher uk-margin">
+        <li>
+            <div class="uk-container">
+                <div class="uk-card uk-card-default uk-card-body uk-padding-remove">
+                    <div class="uk-overflow-auto">
+                        <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
+                            <thead>
+                                <tr style="background-color: #80808026;">
+                                    <th class="uk-width-small">Customer Name</th>
+                                    <th class="uk-table-expand">Address</th>
+                                    <th class="uk-width-small">Phone</th>
+                                    <th class="uk-table-shrink uk-text-nowrap">GST</th>
+                                    <th class="uk-table-small">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let customer of customers">
+                                    <td><b>{{customer.name}}</b></td>
+                                    <td>{{customer.address}}</td>
+                                    <td class="uk-text-truncate">{{customer.contact}}</td>
+                                    <td class="uk-text-nowrap">{{customer.gst}}</td>
+                                    <td>
+                                        <button class="uk-button uk-button-text uk-margin-small-right">
+                    <a [routerLink]="['/edit', customer.id]" uk-icon="icon: file-edit"></a>
+                  </button>
+                                        <button class="uk-button uk-button-text">
+                    <a (click)="onDelete(customer.id)" uk-icon="icon: trash"></a>
+                  </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="uk-container">
+                <div class="uk-child-width-1-2@l uk-height-1-1" uk-height-match="target: > div > div> .uk-card" uk-grid>
+                    <div *ngFor="let customer of customers">
+                        <div class="uk-margin">
+                            <div class="uk-card uk-card-hover uk-card-default uk-card-small" style="outline-width: 0.25px;outline-style: solid;outline-color: grey;">
+                                <div class="uk-card-body">
+                                    <h2 class="uk-card-title uk-margin-small-bottom">{{customer.name}}</h2>
+                                    <div>
+                                        <strong>Address:</strong> <br>{{customer.address}}<br>
+                                        <strong>Contact:</strong> <br>{{customer.contact}}<br>
+                                        <strong>GST:</strong> <br>{{customer.gst}}
+                                    </div>
+                                </div>
+                                <div class="uk-card-footer uk-background-muted">
+                                    <button class="uk-button uk-button-primary uk-button-small uk-margin-remove">New Invoice</button>
+                                    <div class="uk-float-right">
+                                        <a [routerLink]="['/edit', customer.id]" class="uk-icon-link uk-margin-small-right" uk-icon="icon: file-edit"></a>
+                                        <a (click)="onDelete(customer.id)" class="uk-icon-link" uk-icon="icon: trash"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

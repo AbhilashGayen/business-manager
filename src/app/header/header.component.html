@@ -1,0 +1,40 @@
+<nav class="uk-navbar-container" uk-sticky uk-navbar>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="#">HOME</a></li>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+            <li *ngIf="userAuthenticated"><a a routerLink="/list">Customer</a></li>
+            <li *ngIf="userAuthenticated"><a routerLink="/invoice">Invoice</a></li>
+            <li *ngIf="userAuthenticated">
+                <a (click)="onLogout()">Log Out</a>
+            </li>
+            <li *ngIf="!userAuthenticated">
+                <a routerLink="/auth/login">Log In</a>
+            </li>
+        </ul>
+        <ul class="uk-navbar-nav uk-margin-small-right ">
+            <a href="#offcanvas-nav-primary " uk-toggle><span uk-icon="menu "></span></a>
+        </ul>
+    </div>
+</nav>
+<div id="offcanvas-nav-primary " uk-offcanvas=" flip: true ">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column ">
+
+        <ul class="uk-nav uk-nav-default ">
+            <li class="uk-parent "><a href="# ">Customer</a>
+                <ul class="uk-navbar-sub ">
+
+                    <li><a routerLink="/list">List</a></li>
+                    <li><a routerLink="/create ">Create</a></li>
+
+                </ul>
+            </li>
+            <li><a routerLink="/invoice ">Invoice</a></li>
+            <li><a routerLink="/auth/login ">Log In</a></li>
+        </ul>
+
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-align-center">
+    <div uk-spinner="ratio: 3" *ngIf="isLoading"></div>
+    <form (submit)="onSaveCustomer()" [formGroup]='form' *ngIf="!isLoading">
+        <h3 class="uk-card-title uk-text-bold uk-text-uppercase uk-text-primary">CUSTOMER DETAILS</h3>
+        <div class="uk-margin">
+            <label class="uk-form-label">Customer Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" placeholder="" formControlName='name'>
+            </div>
+            <mat-error *ngIf="form.get('name').invalid">Please enter customer name</mat-error>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label">Address</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" rows="2" placeholder="" name="address" required formControlName='address'></textarea>
+            </div>
+            <mat-error *ngIf="form.get('address').invalid">Please enter customer address</mat-error>
+        </div>
+        <div>
+            <button mat-stroked-button type="button" (click)=filePicker.click()> Pick Image </button>
+            <input type="file" #filePicker (change)="onImagePicked($event)">
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label">Contact</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="number" placeholder="" formControlName='contact'>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label">GST</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" type="text" placeholder="" formControlName='gst'>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-form-controls">
+                <button type="submit" class="uk-button uk-button-primary">Save Customer</button>
+            </div>
+        </div>
+    </form>
+</div>
