@@ -60,7 +60,7 @@ export class CustomersService {
 
     this.http.post<{ message: string, customer: Customer }>(BACKEND_URL, customerData)
       .subscribe(responseData => {
-        this.router.navigate(['/list']);
+        this.router.navigate(['/customer-list']);
       });
   }
 
@@ -81,7 +81,7 @@ export class CustomersService {
     }
     this.http.put(BACKEND_URL + id, customerData)
       .subscribe(response => {
-        this.router.navigate(['/list']);
+        this.router.navigate(['/customer-list']);
       });
   }
 

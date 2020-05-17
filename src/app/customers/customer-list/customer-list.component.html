@@ -1,6 +1,6 @@
 <div class="uk-container uk-margin-medium-top">
     <div uk-margin>
-        <div routerLink="/create" class="uk-inline">
+        <div routerLink="/customer-create" class="uk-inline">
             <a class="uk-form-icon" style="color: white " uk-icon="icon: plus-circle"></a>
             <button class="uk-button uk-button-primary uk-button-medium">&nbsp;&nbsp;ADD NEW CUSTOMER</button>
         </div>
@@ -24,7 +24,7 @@
                     <div class="uk-overflow-auto">
                         <table class="uk-table uk-table-hover uk-table-middle uk-table-divider">
                             <thead>
-                                <tr style="background-color: #80808026;">
+                                <tr style="background-color: #444757;">
                                     <th class="uk-width-small">Customer Name</th>
                                     <th class="uk-table-expand">Address</th>
                                     <th class="uk-width-small">Phone</th>
@@ -40,7 +40,7 @@
                                     <td class="uk-text-nowrap">{{customer.gst}}</td>
                                     <td>
                                         <button class="uk-button uk-button-text uk-margin-small-right">
-                    <a [routerLink]="['/edit', customer.id]" uk-icon="icon: file-edit"></a>
+                    <a [routerLink]="['/customer-edit', customer.id]" uk-icon="icon: file-edit"></a>
                   </button>
                                         <button class="uk-button uk-button-text">
                     <a (click)="onDelete(customer.id)" uk-icon="icon: trash"></a>
@@ -70,7 +70,7 @@
                                 <div class="uk-card-footer uk-background-muted">
                                     <button class="uk-button uk-button-primary uk-button-small uk-margin-remove">New Invoice</button>
                                     <div class="uk-float-right">
-                                        <a [routerLink]="['/edit', customer.id]" class="uk-icon-link uk-margin-small-right" uk-icon="icon: file-edit"></a>
+                                        <a [routerLink]="['/customer-edit', customer.id]" class="uk-icon-link uk-margin-small-right" uk-icon="icon: file-edit"></a>
                                         <a (click)="onDelete(customer.id)" class="uk-icon-link" uk-icon="icon: trash"></a>
                                     </div>
                                 </div>

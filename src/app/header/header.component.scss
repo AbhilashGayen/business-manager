@@ -13,3 +13,15 @@ ul {
 .spacer {
     flex: 1 1 auto;
 }
+
+.uk-navbar-container {
+  background-color: #28a4f5;
+}
+
+.uk-navbar-nav {
+  >li{
+    >a {
+    color: white;
+  }
+  }
+}

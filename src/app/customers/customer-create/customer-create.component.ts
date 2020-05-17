@@ -22,6 +22,7 @@ export class CustomerCreateComponent implements OnInit, OnDestroy {
   customer: Customer;
   isLoading = false;
   imagePreview: any;
+  imageButtonTitle: string = 'Pick Image';
   form: FormGroup;
   private mode: string = 'create';
   private customerId: string;
@@ -73,6 +74,7 @@ export class CustomerCreateComponent implements OnInit, OnDestroy {
 
 
   onSaveCustomer() {
+    this.form.markAllAsTouched();
     if (this.form.invalid) {
       return;
     }
@@ -100,6 +102,7 @@ export class CustomerCreateComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result as string;
+      this.imageButtonTitle = 'Update Image';
     };
     reader.readAsDataURL(file);
   }

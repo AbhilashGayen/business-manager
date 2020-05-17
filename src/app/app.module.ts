@@ -10,14 +10,17 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { CustomersModule } from './customers/customers.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InvoiceCreateComponent } from './invoice/invoice-create/invoice-create.component';
+import { CommonModule, CurrencyPipe  } from '@angular/common';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    InvoiceCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -26,11 +29,13 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     AngularMaterialModule,
     CustomersModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    CurrencyPipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]

@@ -1,13 +1,13 @@
 <nav class="uk-navbar-container" uk-sticky uk-navbar>
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
-            <li class="uk-active"><a href="#">HOME</a></li>
+            <li class="uk-active"><a routerLink='/'>HOME</a></li>
         </ul>
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li *ngIf="userAuthenticated"><a a routerLink="/list">Customer</a></li>
-            <li *ngIf="userAuthenticated"><a routerLink="/invoice">Invoice</a></li>
+            <li *ngIf="userAuthenticated"><a a routerLink="/customer-list">Customer</a></li>
+            <li *ngIf="userAuthenticated"><a routerLink="/invoice-create">Invoice</a></li>
             <li *ngIf="userAuthenticated">
                 <a (click)="onLogout()">Log Out</a>
             </li>
@@ -27,12 +27,12 @@
             <li class="uk-parent "><a href="# ">Customer</a>
                 <ul class="uk-navbar-sub ">
 
-                    <li><a routerLink="/list">List</a></li>
-                    <li><a routerLink="/create ">Create</a></li>
+                    <li><a routerLink="/customer-list">List</a></li>
+                    <li><a routerLink="/customer-create ">Create</a></li>
 
                 </ul>
             </li>
-            <li><a routerLink="/invoice ">Invoice</a></li>
+            <li><a routerLink="/invoice-create">Invoice</a></li>
             <li><a routerLink="/auth/login ">Log In</a></li>
         </ul>
 
