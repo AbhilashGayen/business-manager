@@ -1,0 +1,60 @@
+<form [formGroup]="exampleForm" novalidate (submit)="save(exampleForm.value, exampleForm.valid,$event)">
+
+  <div class="uk-margin-medium-small">
+    <table formArrayName="units" class="uk-table uk-table-divider">
+      <thead style="background-color: #444757; ">
+        <tr>
+          <th style="width:45%;">Item</th>
+          <th style="width:15%;">Quantity</th>
+          <th style="width:15%;">Unit Price</th>
+          <th style="width:15%;">Total</th>
+          <th style="width:10%;">Action</th>
+        </tr>
+      </thead>
+
+        <tr [formGroupName]="i" *ngFor="let unit of exampleForm.get('units')['controls']; let i=index">
+          <td>
+            <input formControlName="unitName" name="item " class="uk-input " type="text " required>
+          </td>
+          <td>
+            <input formControlName="qty" name="quantity " class="uk-input " type="number " required>
+          </td>
+          <td>
+            <input formControlName='unitPrice' name="unitPrice " class="uk-input " type="number " required>
+          </td>
+          <td class="uk-text-emphasis">
+            <input class="uk-text-emphasis" formControlName='unitTotalPrice' name="unitTotalPrice " class="uk-input" required>
+          </td>
+          <td>
+            <div class="uk-margin ">
+              <div class="uk-inline " (click)="removeUnit(i) ">
+                <a class=" uk-form-icon " style="color: white" uk-icon="icon: trash "></a>
+                <button class="uk-button uk-button-danger"> &nbsp;&nbsp;DELETE</button>
+              </div>
+            </div>
+          </td>
+        <tr>
+          <td>
+            <div class="uk-inline" (click)="addUnit()">
+              <a class="uk-form-icon" style="color: white " uk-icon="icon: plus "></a>
+              <div class="uk-button uk-button-primary">&nbsp;&nbsp;ADD</div>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td>
+            <h3 class="uk-align-right uk-text-bolder ">Grand Total</h3>
+          </td>
+          <td class="uk-align-right uk-text-bolder uk-text-lead "> {{ totalSum | currency:'INR':'symbol-narrow':'1.2-2'}}</td>
+        </tr>
+
+    </table>
+  </div>
+  <div uk-margin>
+    <div class="uk-inline uk-align-right">
+      <a class="uk-form-icon " style="color: white " uk-icon="icon: print"></a>
+      <button type="submit" class="uk-button uk-button-secondary uk-button-large">&nbsp;&nbsp;Print Preview</button>
+    </div>
+  </div>
+</form>
+
